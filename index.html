@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành CSS | flex-wrap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <p class="eyebrow">CSS FLEXBOX · BÀI THỰC HÀNH</p>
+        <h1>Thuộc tính <code>flex-wrap</code></h1>
+        <p class="intro">Thay đổi cách các Flex Item sắp xếp khi không đủ chỗ trên một dòng.</p>
+    </header>
+
+    <main class="page-content">
+        <section class="lesson-card" aria-labelledby="demo-title">
+            <div class="card-heading">
+                <div>
+                    <p class="section-label">VÍ DỤ TỔNG HỢP</p>
+                    <h2 id="demo-title">Thử trực tiếp các giá trị</h2>
+                </div>
+                <span class="item-count">6 items</span>
+            </div>
+
+            <label class="select-label" for="wrap-mode">Chọn giá trị flex-wrap</label>
+            <select id="wrap-mode">
+                <option value="nowrap">nowrap</option>
+                <option value="wrap" selected>wrap</option>
+                <option value="wrap-reverse">wrap-reverse</option>
+                <option value="initial">initial</option>
+            </select>
+
+            <div class="value-row">
+                <span class="value-chip" id="active-value">flex-wrap: wrap;</span>
+                <span class="meaning" id="mode-description">Cho phép các item chuyển xuống dòng tiếp theo.</span>
+            </div>
+
+            <div class="demo-frame">
+                <div class="flex-container" id="flex-demo" style="flex-wrap: wrap;" aria-label="Ví dụ Flexbox gồm sáu item">
+                    <div class="item item-1">Item 1</div>
+                    <div class="item item-2">Item 2</div>
+                    <div class="item item-3">Item 3</div>
+                    <div class="item item-4">Item 4</div>
+                    <div class="item item-5">Item 5</div>
+                    <div class="item item-6">Item 6</div>
+                </div>
+            </div>
+            <p class="hint" id="mode-hint">Với wrap, các item tiếp tục ở dòng mới khi không còn đủ chiều rộng.</p>
+        </section>
+
+        <section class="explanation-grid" aria-label="Giải thích các giá trị">
+            <article class="info-card">
+                <span class="mini-tag">01</span>
+                <h3><code>nowrap</code></h3>
+                <p>Giữ tất cả item trên cùng một dòng. Nếu không đủ chỗ, nội dung có thể tràn ngang.</p>
+            </article>
+            <article class="info-card">
+                <span class="mini-tag">02</span>
+                <h3><code>wrap</code></h3>
+                <p>Cho phép item tự xuống dòng theo hướng thông thường khi hết chỗ.</p>
+            </article>
+            <article class="info-card">
+                <span class="mini-tag">03</span>
+                <h3><code>wrap-reverse</code></h3>
+                <p>Cho phép nhiều dòng, đồng thời đảo hướng của trục phụ (cross axis). Thứ tự item vẫn giữ nguyên.</p>
+            </article>
+            <article class="info-card">
+                <span class="mini-tag">04</span>
+                <h3><code>initial</code></h3>
+                <p>Đặt thuộc tính về giá trị ban đầu của CSS. Với <code>flex-wrap</code>, giá trị đó là <code>nowrap</code>.</p>
+            </article>
+        </section>
+
+        <section class="code-card">
+            <h2>Mã CSS đang sử dụng</h2>
+            <pre><code>.container {
+    display: flex;
+    flex-wrap: <span id="code-value">wrap</span>;
+    width: 600px;
+    height: 300px;
+    gap: 10px;
+}
+
+.item {
+    flex: 0 0 180px;
+    height: 80px;
+}</code></pre>
+            <p class="hint">Chọn <code>initial</code> trong danh sách để xem nó đưa <code>flex-wrap</code> về hành vi mặc định <code>nowrap</code>.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Bài thực hành CSS Flexbox · <code>flex-wrap</code></p>
+    </footer>
+
+    <script>
+        const modeSelect = document.getElementById('wrap-mode');
+        const demo = document.getElementById('flex-demo');
+        const activeValue = document.getElementById('active-value');
+        const description = document.getElementById('mode-description');
+        const hint = document.getElementById('mode-hint');
+        const codeValue = document.getElementById('code-value');
+
+        const modeInfo = {
+            'nowrap': {
+                description: 'Giữ các item trên một dòng; có thể tràn ngang.',
+                hint: 'Các item không xuống dòng. Cuộn ngang trong khung để xem các item nằm tiếp theo trên cùng dòng.'
+            },
+            'wrap': {
+                description: 'Cho phép các item chuyển xuống dòng tiếp theo.',
+                hint: 'Khi không đủ chiều rộng, các item được chuyển xuống dòng mới theo hướng thông thường.'
+            },
+            'wrap-reverse': {
+                description: 'Cho phép xuống dòng và đảo hướng trục phụ.',
+                hint: 'Các dòng được xếp theo hướng ngược lại; thứ tự Item 1 đến Item 6 vẫn được giữ nguyên.'
+            },
+            'initial': {
+                description: 'Trả về giá trị mặc định: nowrap.',
+                hint: 'initial tương đương hành vi flex-wrap: nowrap, vì vậy các item vẫn nằm trên cùng một dòng.'
+            }
+        };
+
+        function applyMode(mode) {
+            demo.style.flexWrap = mode;
+            activeValue.textContent = `flex-wrap: ${mode};`;
+            codeValue.textContent = mode;
+            description.textContent = modeInfo[mode].description;
+            hint.textContent = modeInfo[mode].hint;
+        }
+
+        modeSelect.addEventListener('change', () => applyMode(modeSelect.value));
+        const queryMode = new URLSearchParams(window.location.search).get('mode');
+        if (queryMode && modeInfo[queryMode]) modeSelect.value = queryMode;
+        applyMode(modeSelect.value);
+    </script>
+</body>
+</html>

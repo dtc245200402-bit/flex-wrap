@@ -1,0 +1,116 @@
+:root {
+    color-scheme: light;
+    --ink: #172033;
+    --muted: #627087;
+    --line: #dce4ee;
+    --paper: #f4f7fb;
+    --blue: #2563eb;
+    --navy: #14233b;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; }
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+}
+.site-header {
+    padding: 42px 24px 46px;
+    background: var(--navy);
+    color: white;
+}
+.site-header, .page-content, .site-footer { padding-left: max(22px, calc((100% - 1040px) / 2)); padding-right: max(22px, calc((100% - 1040px) / 2)); }
+.eyebrow, .section-label {
+    margin: 0 0 8px;
+    color: #93c5fd;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+}
+h1 { margin: 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.18; }
+h1 code { color: #bfdbfe; }
+.intro { max-width: 660px; margin: 14px 0 0; color: #d5deeb; font-size: 16px; }
+.page-content { padding-top: 28px; padding-bottom: 42px; }
+.lesson-card, .info-card, .code-card {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 10px 28px rgba(20, 35, 59, .045);
+}
+.lesson-card { padding: 26px; }
+.card-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
+.section-label { color: var(--blue); }
+h2 { margin: 0; font-size: 23px; line-height: 1.25; }
+.item-count { flex: 0 0 auto; border: 1px solid #dbeafe; border-radius: 999px; padding: 5px 11px; color: #1d4ed8; background: #eff6ff; font-size: 12px; font-weight: 700; }
+.select-label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 13px; font-weight: 700; }
+select {
+    width: min(100%, 360px);
+    min-height: 44px;
+    padding: 9px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background: white;
+    color: var(--ink);
+    font: inherit;
+}
+.value-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 16px 0 13px; }
+.value-chip { border-radius: 7px; padding: 5px 9px; background: #e8efff; color: #1d4ed8; font-family: Consolas, monospace; font-size: 13px; font-weight: 700; }
+.meaning { color: var(--muted); font-size: 13px; }
+.demo-frame { width: 600px; max-width: 100%; overflow-x: auto; border: 2px solid #172033; border-radius: 8px; background-color: #fff; }
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+    width: 600px;
+    max-width: 100%;
+    height: 300px;
+    padding: 10px;
+    overflow: visible;
+    background-image: linear-gradient(to right, rgba(148,163,184,.09) 1px, transparent 1px), linear-gradient(to bottom, rgba(148,163,184,.09) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+.item {
+    display: flex;
+    flex: 0 0 180px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(37,99,235,.16);
+    border-radius: 10px;
+    background: #dbeafe;
+    color: #173d82;
+    font-size: 16px;
+    font-weight: 700;
+}
+.item-2, .item-5 { background: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+.item-3, .item-6 { background: #ffedd5; color: #9a3412; border-color: #fed7aa; }
+.hint { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+.explanation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.info-card { position: relative; padding: 20px; }
+.info-card h3 { margin: 6px 0 7px; font-size: 17px; }
+.info-card p { margin: 0; color: var(--muted); font-size: 14px; }
+.mini-tag { display: inline-flex; align-items: center; justify-content: center; width: 27px; height: 27px; border-radius: 8px; background: #eef2ff; color: #3730a3; font-size: 11px; font-weight: 800; }
+code { font-family: Consolas, 'Courier New', monospace; }
+.code-card { margin-top: 18px; padding: 24px; }
+.code-card h2 { margin-bottom: 14px; }
+pre { overflow-x: auto; margin: 0; padding: 18px; border-radius: 12px; background: #111827; color: #dbeafe; font-size: 14px; line-height: 1.6; }
+pre span { color: #fbbf24; font-weight: 700; }
+.site-footer { padding-top: 20px; padding-bottom: 24px; background: var(--navy); color: #d5deeb; font-size: 13px; }
+.site-footer p { margin: 0; }
+
+@media (max-width: 640px) {
+    .site-header { padding-top: 32px; padding-bottom: 34px; }
+    .page-content { padding-top: 18px; padding-bottom: 28px; }
+    .lesson-card { padding: 18px; }
+    .card-heading { gap: 10px; }
+    h2 { font-size: 20px; }
+    .explanation-grid { grid-template-columns: 1fr; }
+    .info-card, .code-card { padding: 18px; }
+    .flex-container { width: 100%; max-width: 100%; }
+    .item { flex-basis: 130px; }
+    .demo-frame { max-width: 100%; }
+}
